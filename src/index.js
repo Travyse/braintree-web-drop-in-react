@@ -33,17 +33,19 @@ export default class DropIn extends React.Component {
         preselectVaultedPaymentMethod: this.props.preselectVaultedPaymentMethod,
         ...this.props.options,
       });
-
+  
       this.instance.on("noPaymentMethodRequestable", (...args) => {
         if (this.props.onNoPaymentMethodRequestable) {
           this.props.onNoPaymentMethodRequestable(...args);
         }
       });
+
       this.instance.on("paymentMethodRequestable", (...args) => {
         if (this.props.onPaymentMethodRequestable) {
           this.props.onPaymentMethodRequestable(...args);
         }
       });
+
       this.instance.on("paymentOptionSelected", (...args) => {
         if (this.props.onPaymentOptionSelected) {
           this.props.onPaymentOptionSelected(...args);

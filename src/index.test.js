@@ -18,10 +18,14 @@ describe("DropIn", () => {
   it("Calls teardown on destruction", (done) => {
     const braintreeWebDropIn = require("braintree-web-drop-in");
     const teardownMock = jest.fn();
+    const onMock = jest.fn();
     braintreeWebDropIn.create = () =>
-      new Promise((resolve) => {
-        resolve({ teardown: teardownMock });
+    new Promise((resolve) => {
+      resolve({
+        teardown: teardownMock,
+        on: onMock
       });
+    });
 
     const component = renderer.create(
       <DropIn
